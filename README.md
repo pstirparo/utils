@@ -10,7 +10,7 @@ It's an excel sheet that implements the scoring and weighting methodology of the
 There is the standard, official Epoch time (the Unix/POSIX one, seconds elapsed since 1 Jan 1970), and there are "other epoch" type of time (because, why not?)
 Epochalypse is a python script that receives in input a generic timestamp and converts it in several known common format. Sample output ansd currently supported formats below:
 ```
-$ python3 epochalypse.py -e 551243285
+$ python3 epochalypse.py -e 547120509.243697
 
 ##########################################################
 #                                                        #
@@ -19,12 +19,12 @@ $ python3 epochalypse.py -e 551243285
 #                                                        #
 ##########################################################
 
-Epoch Time input to be converted:  551243285
-Unix:   1987-06-21 03:08:05 UTC
-COCOA:  2018-06-21 03:08:05 UTC
-FAT:    1997-06-20 03:08:05 UTC
-HFS+:   1921-06-20 03:08:05 UTC
-WebKit: 1601-01-01 00:09:11 UTC
-NTFS:   1601-01-01 00:00:55 UTC
-APFS:   1970-01-01 00:00:00 UTC
+Epoch Time input to be converted: 547120509.243697
+Unix:   1987-05-04 09:55:09.243697 UTC
+COCOA:  2018-05-04 09:55:09.243697 UTC
+FAT:    1997-05-03 09:55:09.243697 UTC
+HFS+:   1921-05-03 09:55:09.243697 UTC
+WebKit: 1601-01-01 00:09:07.120510 UTC
+NTFS:   1601-01-01 00:00:54.712051 UTC
+APFS:   1970-01-01 00:00:00.547121 UTC
 ```
