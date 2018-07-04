@@ -7,8 +7,7 @@ It's an excel sheet that implements the scoring and weighting methodology of the
 - https://isc.sans.edu/forums/diary/Analysis+of+Competing+Hypotheses+WCry+and+Lazarus+ACH+part+2/22470/
 
 ## Epochalypse
-There is the standard, official Epoch time (the Unix/POSIX one, seconds elapsed since 1 Jan 1970), and there are "other epoch" type of time (because, why not?)
-Epochalypse is a python script that receives in input a generic timestamp and converts it in several known common format. Sample output ansd currently supported formats below:
+There is the standard, official Epoch time (the Unix/POSIX one, seconds elapsed since 1 Jan 1970), and there are "other epoch" type of time (because, why not?). Epochalypse is a python script that receives in input a generic timestamp and converts it in several known common format. Sample output ansd currently supported formats below:
 ```
 $ python3 epochalypse.py -e 547120509.243697
 
