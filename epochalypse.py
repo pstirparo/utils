@@ -46,48 +46,48 @@ FAT_OFFSET = 315532800
 def fromEpoch(epoch):
   print('Epoch Time input to be converted: %.6f' % epoch)
   try:
-    print('Unix:   ' + datetime.utcfromtimestamp(epoch).isoformat(" ") + ' UTC')
+    print('Unix:    ' + datetime.utcfromtimestamp(epoch).isoformat(" ") + ' UTC')
   except:
-    print('Unix:   -')
+    print('Unix:    -')
   try:
-    print('COCOA:  ' + datetime.utcfromtimestamp(
+    print('COCOA:   ' + datetime.utcfromtimestamp(
         epoch + COCOA_OFFSET).isoformat(" ") + ' UTC')
   except:
-    print('COCOA:  -')
+    print('COCOA:   -')
   try:
     print('FAT:    ' + datetime.utcfromtimestamp(epoch + FAT_OFFSET).isoformat(
         " ") + ' UTC')
   except:
-    print('FAT:    -')
+    print('FAT:     -')
   try:
-    print('HFS+:   ' + datetime.utcfromtimestamp(epoch - HFS_OFFSET).isoformat(
+    print('HFS+:    ' + datetime.utcfromtimestamp(epoch - HFS_OFFSET).isoformat(
         " ") + ' UTC')
   except:
-    print('HFS+:   -')
+    print('HFS+:    -')
   try:
     # Webkit timestamp calculation
     wk = datetime.utcfromtimestamp(float(epoch - WEBKIT_OFFSET) / 1000000)
-    print('WebKit: ' + wk.isoformat(" ") + ' UTC')
+    print('WebKit:  ' + wk.isoformat(" ") + ' UTC')
   except:
-    print('WebKit: -')
+    print('WebKit:  -')
   try:
     # ntfs time calculation
     ntfs = datetime.utcfromtimestamp(float(epoch - NTFS_OFFSET) / 10000000)
-    print('NTFS:   ' + ntfs.isoformat(" ") + ' UTC')
+    print('NTFS:    ' + ntfs.isoformat(" ") + ' UTC')
   except:
-    print('NTFS:   -')
+    print('NTFS:    -')
   try:
     # new APFS time calculation
     apfs = datetime.utcfromtimestamp(float(epoch) / 1000000000)
-    print('APFS:   ' + apfs.isoformat(" ") + ' UTC')
+    print('APFS:    ' + apfs.isoformat(" ") + ' UTC')
   except:
-    print('APFS:   -')
+    print('APFS:    -')
   try:
     # Firefox timestamp, number of microseconds since January 1, 1970 UTC
     ff = datetime.utcfromtimestamp(float(epoch) / 1000000)
-    print('FireFox:' + ff.isoformat(" ") + ' UTC')
+    print('FireFox: ' + ff.isoformat(" ") + ' UTC')
   except:
-    print('FireFox:-')
+    print('FireFox: -')
 
 def main():
   parser = argparse.ArgumentParser()
