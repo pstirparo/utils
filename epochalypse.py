@@ -12,7 +12,7 @@
 
 __description__ = 'Epochalypse - time converter utility'
 __author__ = 'Pasquale Stirparo, @pstirparo'
-__version__ = '0.4'
+__version__ = '0.4.1'
 
 import sys
 import time
@@ -55,7 +55,7 @@ def fromEpoch(epoch):
   except:
     print('COCOA:   -')
   try:
-    print('FAT:    ' + datetime.utcfromtimestamp(epoch + FAT_OFFSET).isoformat(
+    print('FAT:     ' + datetime.utcfromtimestamp(epoch + FAT_OFFSET).isoformat(
         " ") + ' UTC')
   except:
     print('FAT:     -')
