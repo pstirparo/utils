@@ -5,14 +5,14 @@
 ##                                                                         ##
 ## Epochalypse.py --- Utility to convert epoch timestamps                  ##
 ##                                                                         ##
-## Copyright 2016  Pasquale Stirparo, @pstirparo                           ##
+## Copyright 2018  Pasquale Stirparo, @pstirparo                           ##
 ## New License is: Apache 2.0                                              ##
 ##                                                                         ##
 #############################################################################
 
 __description__ = 'Epochalypse - time converter utility'
 __author__ = 'Pasquale Stirparo, @pstirparo'
-__version__ = '0.3'
+__version__ = '0.4'
 
 import sys
 import time
@@ -23,9 +23,11 @@ import argparse
 HFS_OFFSET = 2082844800
 
 # The number of seconds between January 1, 1970 and January 1, 2001.
+# Apple Safari also uses Cocoa timestamp
 COCOA_OFFSET = 978307200
 
 # The difference between Jan 1, 1601 and Jan 1, 1970 in micro seconds
+# WebKit timestamp is used by Google Chrome and Opera
 WEBKIT_OFFSET = 11644473600 * 1000000
 
 # The difference between Jan 1, 1601 and Jan 1, 1970 in 100 nano seconds
@@ -34,45 +36,34 @@ NTFS_OFFSET = 11644473600 * 10000000
 # The difference between Jan 1, 1980 and Jan 1, 1970 in seconds.
 FAT_OFFSET = 315532800
 
-
 # No offset calculation needed for APFS, as represent the number of nano
-# second elapsed since January 1, 1970
-# same as standard Unix epoch
+# second since January 1, 1970 (same as standard Unix epoch)
+
+# No offset calculation needed for FireFox timestamp, as represent the number
+# of microseconds since January 1, 1970 (same as standard Unix epoch)
 
 
 def fromEpoch(epoch):
   print('Epoch Time input to be converted: %.6f' % epoch)
   try:
-    # print('Unix:   ' + time.strftime('%Y-%m-%d %H:%M:%S',
-    #     time.gmtime(epoch)) + ' UTC')
     print('Unix:   ' + datetime.utcfromtimestamp(epoch).isoformat(" ") + ' UTC')
   except:
     print('Unix:   -')
-
   try:
-    # print('COCOA:  ' + time.strftime("%Y-%m-%d %H:%M:%S",
-    #     time.gmtime(epoch + COCOA_OFFSET)) + ' UTC')
     print('COCOA:  ' + datetime.utcfromtimestamp(
         epoch + COCOA_OFFSET).isoformat(" ") + ' UTC')
   except:
     print('COCOA:  -')
-
   try:
-    # print('FAT:    ' + time.strftime("%Y-%m-%d %H:%M:%S",
-    #     time.gmtime(epoch + FAT_OFFSET)) + ' UTC')
     print('FAT:    ' + datetime.utcfromtimestamp(epoch + FAT_OFFSET).isoformat(
         " ") + ' UTC')
   except:
     print('FAT:    -')
-
   try:
-    # print('HFS+:   ' + time.strftime("%Y-%m-%d %H:%M:%S",
-    #     time.gmtime(epoch - HFS_OFFSET)) + ' UTC')
     print('HFS+:   ' + datetime.utcfromtimestamp(epoch - HFS_OFFSET).isoformat(
         " ") + ' UTC')
   except:
     print('HFS+:   -')
-
   try:
     # Webkit timestamp calculation
     wk = datetime.utcfromtimestamp(float(epoch - WEBKIT_OFFSET) / 1000000)
@@ -91,7 +82,12 @@ def fromEpoch(epoch):
     print('APFS:   ' + apfs.isoformat(" ") + ' UTC')
   except:
     print('APFS:   -')
-
+  try:
+    # Firefox timestamp, number of microseconds since January 1, 1970 UTC
+    ff = datetime.utcfromtimestamp(float(epoch) / 1000000)
+    print('FireFox:' + ff.isoformat(" ") + ' UTC')
+  except:
+    print('FireFox:-')
 
 def main():
   parser = argparse.ArgumentParser()
