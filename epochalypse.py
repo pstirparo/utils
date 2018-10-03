@@ -12,7 +12,7 @@
 
 __description__ = 'Epochalypse - time converter utility'
 __author__ = 'Pasquale Stirparo, @pstirparo'
-__version__ = '0.4.1'
+__version__ = '0.5'
 
 import sys
 import time
@@ -89,10 +89,18 @@ def fromEpoch(epoch):
   except:
     print('FireFox: -')
 
+
+def fromHex(hextime):
+    return(float.fromhex(hextime))
+
+
 def main():
   parser = argparse.ArgumentParser()
   parser.add_argument('-e', '--epoch', dest="epoch_input", default=False,
       help='Epoch time to be converted',
+      metavar='')
+  parser.add_argument('-x', '--hex', dest="hexadecimal_input", default=False,
+      help='Hexadecimal timemstamp value to be converted',
       metavar='')
 
   if len(sys.argv) == 1:
@@ -114,7 +122,10 @@ def main():
   if args.epoch_input:
     fromEpoch(float(args.epoch_input))
     print('')
-
+  elif args.hexadecimal_input:
+    epoch = fromHex(args.hexadecimal_input)
+    fromEpoch(epoch)
+    print('')
 
 if __name__ == "__main__":
   main()
