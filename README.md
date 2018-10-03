@@ -10,14 +10,16 @@ It's an excel sheet that implements the scoring and weighting methodology of the
 There is the standard, official Epoch time (the Unix/POSIX one, seconds elapsed since 1 Jan 1970), and there are "other epoch" type of time (because, why not?). Epochalypse is a python script that receives a generic timestamp as input and converts it in several known common formats. In the latest version it supports also timestamps in hexadecimal value as input.
 Sample output and currently supported formats below:
 ```
-$ python3 epochalypse.py -e 547120509.243697
+$ python3 epochalypse.py --help
+usage: epochalypse.py [-h] [-e] [-x]
 
-##########################################################
-#                                                        #
-#    Epochalypse - Epoch timestamp converter utility     #
-#            by Pasquale Stirparo, @pstirparo            #
-#                                                        #
-##########################################################
+optional arguments:
+  -h, --help     show this help message and exit
+  -e , --epoch   Epoch time to be converted
+  -x , --hex     Hexadecimal timemstamp value to be converted
+
+
+$ python3 epochalypse.py -e 547120509.243697
 
 Epoch Time input to be converted: 547120509.243697
 Unix:    1987-05-04 09:55:09.243697 UTC
