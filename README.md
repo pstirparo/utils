@@ -1,5 +1,5 @@
 # utils
-Different DFIR and CTI utilities
+DFIR and CTI utilities
 
 ## ACH_template-v0.4.xlsx
 It's an excel sheet that implements the scoring and weighting methodology of the Analysis of Competing Hypotheses. You can read more about it and a practical use case (WannaCry attribution) below:
