@@ -103,6 +103,9 @@ def main():
       help='Hexadecimal timemstamp value to be converted',
       metavar='')
 
+  parser.add_argument("-r", "--revhex", action="store_true", default=False,
+      help="Reverse hex bytes (for little endian input)")
+
   if len(sys.argv) == 1:
     parser.print_help()
     sys.exit(1)
@@ -123,7 +126,10 @@ def main():
     fromEpoch(float(args.epoch_input))
     print('')
   elif args.hexadecimal_input:
-    epoch = fromHex(args.hexadecimal_input)
+    hex_text = args.hexadecimal_input.replace(' ', '')
+    if args.revhex:
+      hex_text = hex_text.decode('hex')[::-1].encode('hex')
+    epoch = fromHex(hex_text)
     fromEpoch(epoch)
     print('')
 
