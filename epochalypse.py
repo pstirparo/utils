@@ -130,7 +130,6 @@ def main():
     hex_text = args.hexadecimal_input.replace(' ', '')
     if args.revhex:
       hex_text = binascii.hexlify( binascii.unhexlify( hex_text )[::-1] ).decode()
-      print (hex_text)
     epoch = fromHex(hex_text)
     fromEpoch(epoch)
     print('')
