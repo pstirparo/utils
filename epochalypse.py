@@ -18,6 +18,7 @@ import sys
 import time
 from datetime import datetime
 import argparse
+import binascii
 
 # The number of seconds between January 1, 1904 and Jan 1, 1970.
 HFS_OFFSET = 2082844800
@@ -128,7 +129,8 @@ def main():
   elif args.hexadecimal_input:
     hex_text = args.hexadecimal_input.replace(' ', '')
     if args.revhex:
-      hex_text = hex_text.decode('hex')[::-1].encode('hex')
+      hex_text = binascii.hexlify( binascii.unhexlify( hex_text )[::-1] ).decode()
+      print (hex_text)
     epoch = fromHex(hex_text)
     fromEpoch(epoch)
     print('')
