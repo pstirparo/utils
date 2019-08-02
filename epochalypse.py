@@ -101,8 +101,7 @@ def main():
       help='Epoch time to be converted',
       metavar='')
   parser.add_argument('-x', '--hex', dest="hexadecimal_input", default=False,
-      help='Hexadecimal timemstamp value to be converted',
-      metavar='')
+      help='Hexadecimal timemstamp value to be converted', metavar='')
 
   parser.add_argument("-r", "--revhex", action="store_true", default=False,
       help="Reverse hex bytes (for little endian input)")
