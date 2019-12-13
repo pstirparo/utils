@@ -6,6 +6,9 @@ It's an excel sheet that implements the scoring and weighting methodology of the
 - https://isc.sans.edu/forums/diary/Analysis+of+Competing+Hypotheses+ACH+part+1/22460/
 - https://isc.sans.edu/forums/diary/Analysis+of+Competing+Hypotheses+WCry+and+Lazarus+ACH+part+2/22470/
 
+I have also made a shared Google Spreadsheet version of it, feel free to copy it and use it in your analyses:
+https://docs.google.com/spreadsheets/d/1oKYQtVnro3IfNswnj-A5_diwkLcQq0y2VzuCnEKvZdE/edit?usp=sharing
+
 ## Epochalypse
 There is the standard, official Epoch time (the Unix/POSIX one, seconds elapsed since 1 Jan 1970), and there are "other epoch" type of time (because, why not?). Epochalypse is a python script that receives a generic timestamp as input and converts it in several known common formats. In the latest version it supports also timestamps in hexadecimal value as input.
 Sample output and currently supported formats below:
