@@ -102,9 +102,8 @@ def main():
       metavar='')
   parser.add_argument('-x', '--hex', dest="hexadecimal_input", default=False,
       help='Hexadecimal timemstamp value to be converted', metavar='')
-
-  parser.add_argument("-r", "--revhex", action="store_true", default=False,
-      help="Reverse hex bytes (for little endian input)")
+  parser.add_argument('-r', '--revhex', action='store_true', default=False,
+      help='Reverse hex bytes (for little endian input)')
 
   if len(sys.argv) == 1:
     parser.print_help()
@@ -128,7 +127,7 @@ def main():
   elif args.hexadecimal_input:
     hex_text = args.hexadecimal_input.replace(' ', '')
     if args.revhex:
-      hex_text = binascii.hexlify( binascii.unhexlify( hex_text )[::-1] ).decode()
+      hex_text = binascii.hexlify(binascii.unhexlify(hex_text)[::-1]).decode()
     epoch = fromHex(hex_text)
     fromEpoch(epoch)
     print('')
