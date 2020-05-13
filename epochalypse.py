@@ -10,7 +10,7 @@
 ##                                                                         ##
 #############################################################################
 
-__description__ = 'Epochalypse - time converter utility'
+__description__ = 'Epochalypse - timestamp converter utility'
 __author__ = 'Pasquale Stirparo, @pstirparo'
 __version__ = '0.5.1'
 
@@ -97,21 +97,26 @@ def fromHex(hextime):
 
 def main():
   parser = argparse.ArgumentParser()
-  parser.add_argument('-e', '--epoch', dest="epoch_input", default=False,
-      help='Epoch time to be converted', metavar='')
-  parser.add_argument('-x', '--hex', dest="hexadecimal_input", default=False,
-      help='Hexadecimal timemstamp value to be converted', metavar='')
+  parser.add_argument('-e', '--epoch', dest='epoch_input', default=False,
+      help='Epoch time to be converted.', metavar='timestamp')
   parser.add_argument('-r', '--revhex', action='store_true', default=False,
-      help='Reverse hex bytes (for little endian input)')
+      help='Reverse hex bytes (for little endian input), use it together with -x.')
+  parser.add_argument('-x', '--hex', dest='hexadecimal_input', default=False,
+      help='Hexadecimal timemstamp value to be converted.', metavar='hex_timestamp')
+  parser.add_argument('-v', '--version', action='version', version= '%(prog)s ' + __version__)
 
-  if len(sys.argv) == 1:
-    parser.print_help()
-    sys.exit(1)
   try:
     args = parser.parse_args()
-  except:
+    if len(sys.argv) == 1:
+      parser.print_help()
+      sys.exit(1)
+    if args.revhex and not args.hexadecimal_input:
+      print("\nInput parameters Error: Use the -r option together with the hex one, -rx.\n")
+      parser.print_help()
+      sys.exit(1)
+  except Exception as e:
     parser.print_help()
-    sys.exit(0)
+    sys.exit(1)
 
   print('\n##########################################################')
   print('#                                                        #')
@@ -120,16 +125,23 @@ def main():
   print('#                                                        #')
   print('##########################################################\n')
 
-  if args.epoch_input:
-    fromEpoch(float(args.epoch_input))
-    print('')
-  elif args.hexadecimal_input:
-    hex_text = args.hexadecimal_input.replace(' ', '')
-    if args.revhex:
-      hex_text = binascii.hexlify(binascii.unhexlify(hex_text)[::-1]).decode()
-    epoch = fromHex(hex_text)
-    fromEpoch(epoch)
-    print('')
+  try:
+    if args.epoch_input:
+      fromEpoch(float(args.epoch_input))
+      print('')
+    elif args.hexadecimal_input:
+      hex_text = args.hexadecimal_input.replace(' ', '')
+      if args.revhex:
+        hex_text = binascii.hexlify(binascii.unhexlify(hex_text)[::-1]).decode()
+      epoch = fromHex(hex_text)
+      fromEpoch(epoch)
+      print('')
+  except ValueError as e:
+    print("[ERROR] Input value not valid.\n")
+    sys.exit(1)
+  except:
+    sys.exit(1)
+
 
 if __name__ == "__main__":
   main()
