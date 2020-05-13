@@ -12,7 +12,7 @@
 
 __description__ = 'Epochalypse - time converter utility'
 __author__ = 'Pasquale Stirparo, @pstirparo'
-__version__ = '0.5'
+__version__ = '0.5.1'
 
 import sys
 import time
@@ -98,8 +98,7 @@ def fromHex(hextime):
 def main():
   parser = argparse.ArgumentParser()
   parser.add_argument('-e', '--epoch', dest="epoch_input", default=False,
-      help='Epoch time to be converted',
-      metavar='')
+      help='Epoch time to be converted', metavar='')
   parser.add_argument('-x', '--hex', dest="hexadecimal_input", default=False,
       help='Hexadecimal timemstamp value to be converted', metavar='')
   parser.add_argument('-r', '--revhex', action='store_true', default=False,
