@@ -1,25 +1,24 @@
 # utils
-DFIR and CTI utilities
+DFIR utilities
 
 ## ACH_template-v0.4.xlsx
-It's an excel sheet that implements the scoring and weighting methodology of the Analysis of Competing Hypotheses, more specifically the Weighted Inconsistency Counting algorithm. You can read more about it and a practical use case (WannaCry attribution) below:
-- https://isc.sans.edu/forums/diary/Analysis+of+Competing+Hypotheses+ACH+part+1/22460/
-- https://isc.sans.edu/forums/diary/Analysis+of+Competing+Hypotheses+WCry+and+Lazarus+ACH+part+2/22470/
-
-I have also made a shared Google Spreadsheet version of it, feel free to copy it and use it in your analyses:
-https://docs.google.com/spreadsheets/d/1oKYQtVnro3IfNswnj-A5_diwkLcQq0y2VzuCnEKvZdE/edit?usp=sharing
+I have moved all CTI related material under https://github.com/pstirparo/threatintel-resources, check that out!
 
 ## Epochalypse
 There is the standard, official Epoch time (the Unix/POSIX one, seconds elapsed since 1 Jan 1970), and there are "other epoch" type of time (because, why not?). Epochalypse is a python script that receives a generic timestamp as input and converts it in several known common formats. In the latest version it supports also timestamps in hexadecimal value as input.
 Sample output and currently supported formats below:
 ```
 $ python3 epochalypse.py --help
-usage: epochalypse.py [-h] [-e] [-x]
+usage: epochalypse.py [-h] [-e timestamp] [-r] [-x hex_timestamp] [-v]
 
 optional arguments:
-  -h, --help     show this help message and exit
-  -e , --epoch   Epoch time to be converted
-  -x , --hex     Hexadecimal timemstamp value to be converted
+  -h, --help            show this help message and exit
+  -e timestamp, --epoch timestamp
+                        Epoch time to be converted.
+  -r, --revhex          Reverse hex bytes (for little endian input), use it together with -x.
+  -x hex_timestamp, --hex hex_timestamp
+                        Hexadecimal timemstamp value to be converted.
+  -v, --version         show program's version number and exit
 
 
 $ python3 epochalypse.py -e 547120509.243697
