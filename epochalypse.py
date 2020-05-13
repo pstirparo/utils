@@ -38,7 +38,7 @@ NTFS_OFFSET = 11644473600 * 10000000
 FAT_OFFSET = 315532800
 
 # No offset calculation needed for APFS, as represent the number of nano
-# second since January 1, 1970 (same as standard Unix epoch)
+# seconds since January 1, 1970 (same as standard Unix epoch)
 
 # No offset calculation needed for FireFox timestamp, as represent the number
 # of microseconds since January 1, 1970 (same as standard Unix epoch)
@@ -78,7 +78,7 @@ def fromEpoch(epoch):
   except:
     print('NTFS:    -')
   try:
-    # new APFS time calculation
+    # APFS time calculation
     apfs = datetime.utcfromtimestamp(float(epoch) / 1000000000)
     print('APFS:    ' + apfs.isoformat(" ") + ' UTC')
   except:
